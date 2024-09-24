@@ -2,10 +2,10 @@ import numpy as np
 
 
 def differentiate(u, dt):
-    pass
+    x = a
 
 def differentiate_vector(u, dt):
-    pass
+    return 2
 
 def test_differentiate():
     t = np.linspace(0, 1, 10)
