@@ -45,8 +45,8 @@ class Poisson2D:
         """Return vectorized Laplace operator"""
         raise NotImplementedError
 
-    def get_boundary_indices(self):
-        """Return indices of vectorized matrix that belongs to the boundary"""
+    def assemble(self, f=None):
+        """Return assemble coefficient matrix A and right hand side vector b"""
         raise NotImplementedError
 
     def assemble(self):
@@ -58,13 +58,15 @@ class Poisson2D:
         """Return l2-error norm"""
         raise NotImplementedError
 
-    def __call__(self, N):
-        """Solve Poisson's equation.
+    def __call__(self, f=implemented_function('f', lambda x, y: 2)(x, y)):
+        """Solve Poisson's equation with a given righ hand side function
 
         Parameters
         ----------
         N : int
-            The number of uniform intervals in each direction
+            The number of uniform intervals
+        f : Sympy function
+            The right hand side function f(x, y)
 
         Returns
         -------
